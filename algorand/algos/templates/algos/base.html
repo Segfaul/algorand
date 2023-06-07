@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link type="text/css" href="{% static 'algos/css/style.css' %}" rel="stylesheet" />
+	<link type="image/x-icon" rel="icon" href="{% static 'algos/img/intelligent-algorithm-1.png' %}"/>
+</head>
+<body>
+    <header>
+        <ul class="mainmenu">
+
+            <li class="logo">
+                <a href="{% url 'plot_algorithm_performance' %}">
+                    <img class="logo" src="{% static 'algos/img/intelligent-algorithm-1.png' %}" alt="">
+                </a>
+            </li>
+
+            {% if request.user.is_authenticated %}
+            <li class="last">
+                <span>{{user.username}}</span>
+                <span class="last-diversify">/</span>
+                <a href="{% url 'logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li class="last">
+                <a href="{% url 'login' %}">Login</a>
+                <span class="last-diversify">/</span>
+                <a href="{% url 'register' %}">Register</a>
+            </li>
+        </ul>
+        {% endif %}
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+{% block extra_scripts %}
+{% endblock %}
+</body>
+</html>
