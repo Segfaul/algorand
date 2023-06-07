@@ -1,12 +1,12 @@
 # `Algorand`
 
-Telegram web application for publishing the posts prepared in advance by the parser with a convenient display of the list of posts. The application also provides the ability to CRUD operations to authorized users and select the date of publication of the post.
+Micro web application to display a graph of the differences of different search algorithms and use for specific tasks.
 
 ___
 
 ## *Project Status*
 
-***Completed &#10003;***
+*** In progress &#128347;***
 ___
 ## Functionality
 - Basic CRUD operations on posts via Django generic view classes
