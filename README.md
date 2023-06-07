@@ -6,7 +6,7 @@ ___
 
 ## *Project Status*
 
-*** In progress &#128347;***
+*** In progress &#128347; ***
 ___
 ## Functionality
 - Basic CRUD operations on posts via Django generic view classes
