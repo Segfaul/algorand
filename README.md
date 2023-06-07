@@ -18,7 +18,6 @@ ___
 ## Technologies and Frameworks
 - Python 3.11 
 - Django 4.2.1
-- Pyrogram 2.0.1
 - HTML, CSS, JS
 - SQLite 3
 ___
@@ -28,13 +27,13 @@ ___
 1. Clone the repository to the local machine
 
     ```shell
-    git clone https://github.com/Segfaul/telegram_news_editor.git
+    git clone https://github.com/Segfaul/algorand.git
     ```
 
 2. Go to the repository directory
 
     ```shell
-    cd telegram_news_editor
+    cd algorand
     ```
 
 3. Create and activate a virtual environment
@@ -50,26 +49,20 @@ ___
     pip install -r requirements.txt
     ```
 
-5. Configure the configuration file cfg.json (the parser is customized for https://cointelegraph.com)
-
-    ```shell
-    nano cfg.json
-    ```
-
-6. Go to the news_editor directory
+5. Go to the news_editor directory
 
     ```
-    cd news_editor
+    cd algorand
     ```
 
-7. Create database migrations and apply them
+6. Create database migrations and apply them
 
     ```python
     python manage.py makemigrations
     python manage.py migrate
     ```
 
-8. Create a Django project superuser (admin)
+7. Create a Django project superuser (admin)
 
     ```python
     python manage.py createsuperuser
@@ -85,12 +78,6 @@ ___
 
     ```shell
     cd ..
-    ```
-
-11. Run the main news parser also in the background
-
-    ```python
-    python init.py &
     ```
 
 12. In case of a problem, the program will stop automatically or you can stop execution using
