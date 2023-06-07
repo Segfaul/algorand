@@ -1,90 +1,29 @@
-from io import BytesIO
-import base64
-
 from django.contrib.auth import logout, login
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import View, CreateView
-import numpy as np
-import matplotlib.pyplot as plt
+from django.views.generic import View, CreateView, TemplateView
 
-from .algo_dir.algo import *
+from .algo_dir.algo import summary
 from .forms import LoginUserForm, RegisterUserForm
 
 
-class PlotAlgorithmPerformanceView(UserPassesTestMixin, View):
+class PlotAlgorithmPerformanceView(UserPassesTestMixin, TemplateView):
+    template_name = 'algos/algos.html'
+    login_url = reverse_lazy('plot_algorithm_performance')
+
+    raise_exception = True
 
     def test_func(self):
         return self.request.user.is_authenticated
 
-    def get(self, request):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
 
-        sizes = [500_000, 2_000_000, 5_000_000, 10_000_000]
-        data = []
-        for size in sizes:
-            # data.append(np.random.randint(low=0, high=100, size=size))
-            data.append(np.unique(np.arange(size)))
+        context['graphic'] = summary()
 
-        times_algorithm = {
-            'interpolation_search': [],
-            'fibonacci_search': [],
-            'binary_search': []
-        }
-
-        for arr in data:
-            arr.sort()
-            print(arr)
-            search_value = arr[0]
-            times_algorithm['interpolation_search'].append(
-                measure_execution_time(interpolation_search, arr, search_value)
-            )
-            times_algorithm['fibonacci_search'].append(
-                measure_execution_time(fibonacci_search, arr, search_value)
-            )
-            times_algorithm['binary_search'].append(
-                measure_execution_time(binary_search, arr, search_value)
-            )
-
-        plt.clf()
-
-        plt.figure(figsize=(20, 12))
-
-        plt.plot(
-            sizes,
-            times_algorithm['interpolation_search'],
-            label='interpolation_search',
-            linestyle='-',
-            color='blue'
-        )
-        plt.plot(
-            sizes,
-            times_algorithm['fibonacci_search'],
-            label='fibonacci_search',
-            linestyle='--',
-            color='green'
-        )
-        plt.plot(
-            sizes,
-            times_algorithm['binary_search'],
-            label='binary_search',
-            linestyle=':',
-            color='red'
-        )
-        plt.xlabel('Array Size')
-        plt.ylabel('Execution Time')
-        plt.title('Algorithm Performance')
-        plt.legend()
-
-        buffer = BytesIO()
-        plt.savefig(buffer, format='png')
-        buffer.seek(0)
-
-        image_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
-        buffer.close()
-
-        return render(request, 'algos/algos.html', {'graphic': image_base64})
+        return context
 
 
 class RegisterUserView(UserPassesTestMixin, CreateView):
