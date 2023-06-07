@@ -7,4 +7,5 @@ urlpatterns = [
     path('register/', RegisterUserView.as_view(), name='register'),
 
     path('', PlotAlgorithmPerformanceView.as_view(), name='plot_algorithm_performance'),
+    path('find_value/', ArraySearchView.as_view(), name='array_search'),
 ]

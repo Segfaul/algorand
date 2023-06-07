@@ -114,12 +114,12 @@ def binary_search(sequence: [int or float], target: int or float) -> int:
 def measure_execution_time(function: Callable, *args):
     start_time = time()
 
-    function(*args)
+    res = function(*args)
 
     end_time = time()
     execution_time = end_time - start_time
 
-    return execution_time
+    return [execution_time, res, function.__name__]
 
 
 def summary():
@@ -140,13 +140,13 @@ def summary():
         print(arr)
         search_value = arr[0]
         times_algorithm['interpolation_search'].append(
-            measure_execution_time(interpolation_search, arr, search_value)
+            measure_execution_time(interpolation_search, arr, search_value)[0]
         )
         times_algorithm['fibonacci_search'].append(
-            measure_execution_time(fibonacci_search, arr, search_value)
+            measure_execution_time(fibonacci_search, arr, search_value)[0]
         )
         times_algorithm['binary_search'].append(
-            measure_execution_time(binary_search, arr, search_value)
+            measure_execution_time(binary_search, arr, search_value)[0]
         )
 
     plt.clf()

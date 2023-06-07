@@ -3,10 +3,10 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import View, CreateView, TemplateView
+from django.views.generic import View, CreateView, TemplateView, FormView
 
-from .algo_dir.algo import summary
-from .forms import LoginUserForm, RegisterUserForm
+from .algo_dir.algo import *
+from .forms import *
 
 
 class PlotAlgorithmPerformanceView(UserPassesTestMixin, TemplateView):
@@ -24,6 +24,27 @@ class PlotAlgorithmPerformanceView(UserPassesTestMixin, TemplateView):
         context['graphic'] = summary()
 
         return context
+
+
+class ArraySearchView(UserPassesTestMixin, FormView):
+    template_name = 'algos/input_arr.html'
+    form_class = ArraySearchForm
+    raise_exception = True
+
+    def test_func(self):
+        return self.request.user.is_authenticated
+
+    def form_valid(self, form):
+        array = form.cleaned_data['array']
+        target = form.cleaned_data['target']
+
+        context = {
+            'interpolation_search': measure_execution_time(interpolation_search, array, target),
+            'fibonacci_search': measure_execution_time(fibonacci_search, array, target),
+            'binary_search': measure_execution_time(binary_search, array, target)
+        }
+
+        return render(self.request, 'algos/input_arr_results.html', {'context': context})
 
 
 class RegisterUserView(UserPassesTestMixin, CreateView):

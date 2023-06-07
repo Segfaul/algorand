@@ -1,0 +1,11 @@
+{% extends 'algos/base.html' %}
+
+{% block content %}
+
+{% for algo, execution_time in context.items %}
+    <h3>{{ algo }}</h3>
+    <p>Время выполнения: {{ execution_time }}</p>
+{% endfor %}
+
+
+{% endblock %}
