@@ -17,6 +17,10 @@
                     <img class="logo" src="{% static 'algos/img/intelligent-algorithm-1.png' %}" alt="">
                 </a>
             </li>
+		
+	    <li class="last">
+                <a href="{% url 'array_search' %}">Поиск индекса</a>
+            </li>
 
             {% if request.user.is_authenticated %}
             <li class="last">
