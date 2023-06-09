@@ -17,8 +17,8 @@
                     <img class="logo" src="{% static 'algos/img/intelligent-algorithm-1.png' %}" alt="">
                 </a>
             </li>
-		
-	    <li class="last">
+
+            <li class="last">
                 <a href="{% url 'array_search' %}">Поиск индекса</a>
             </li>
 
@@ -43,6 +43,8 @@
     </main>
 
 {% block extra_scripts %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'algos/js/ajax.js' %}"></script>
 {% endblock %}
 </body>
 </html>

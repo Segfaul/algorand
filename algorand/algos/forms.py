@@ -8,8 +8,10 @@ class ArraySearchForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    array = forms.CharField(label='Массив', max_length=100)
-    target = forms.CharField(label='Искомое значение', max_length=50)
+    array = forms.CharField(label='Массив', max_length=100,
+                            widget=forms.TextInput(attrs={'class': 'form-input'}))
+    target = forms.CharField(label='Искомое значение', max_length=50,
+                             widget=forms.TextInput(attrs={'class': 'form-input'}))
 
     def clean(self):
         try:

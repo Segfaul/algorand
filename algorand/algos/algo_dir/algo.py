@@ -8,7 +8,10 @@ from numpy import ndarray
 from typing import Callable
 
 
-def interpolation_search(sequence: [int or float] or ndarray, target: int or float) -> int:
+def interpolation_search(sequence: [int or float] or ndarray = None, target: int or float = None) -> int:
+
+    if type(target) != int and type(target) != float and type(target) != np.int32:
+        return -1
 
     if type(sequence) == list:
         if not sequence or sequence != sorted(sequence):
@@ -36,7 +39,10 @@ def interpolation_search(sequence: [int or float] or ndarray, target: int or flo
     return -1
 
 
-def fibonacci_search(sequence: [int or float], target: int or float) -> int:
+def fibonacci_search(sequence: [int or float] or ndarray = None, target: int or float = None) -> int:
+
+    if type(target) != int and type(target) != float and type(target) != np.int32:
+        return -1
 
     if type(sequence) == list:
         if not sequence or sequence != sorted(sequence):
@@ -81,7 +87,10 @@ def fibonacci_search(sequence: [int or float], target: int or float) -> int:
     return -1
 
 
-def binary_search(sequence: [int or float], target: int or float) -> int:
+def binary_search(sequence: [int or float] or ndarray = None, target: int or float = None) -> int:
+
+    if type(target) != int and type(target) != float and type(target) != np.int32:
+        return -1
 
     if type(sequence) == list:
         if not sequence or sequence != sorted(sequence):
@@ -137,8 +146,8 @@ def summary():
 
     for arr in data:
         arr.sort()
-        print(arr)
         search_value = arr[0]
+
         times_algorithm['interpolation_search'].append(
             measure_execution_time(interpolation_search, arr, search_value)[0]
         )

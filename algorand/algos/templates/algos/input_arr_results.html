@@ -1,11 +1,22 @@
 {% extends 'algos/base.html' %}
 
 {% block content %}
-
-{% for algo, execution_time in context.items %}
-    <h3>{{ algo }}</h3>
-    <p>Время выполнения: {{ execution_time }}</p>
-{% endfor %}
-
-
+<table class="table">
+    <thead>
+        <tr>
+            <th>Алгоритм</th>
+            <th>Время выполнения</th>
+            <th>Результат выполнения</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for algo, params in context.items %}
+        <tr>
+            <td class="algo-title">{{ algo }}</td>
+            <td>{{ params.0 }}s</td>
+            <td class="algo-result">{{ params.1 }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
