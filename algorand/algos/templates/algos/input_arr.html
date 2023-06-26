@@ -3,7 +3,7 @@
 {% block content %}
 
 <h1>{{title}}</h1>
-<form action="{% url 'array_search' %}", method="post", enctype="multipart/form-data">
+<form action="{% url 'array_search' %}", method="post", enctype="multipart/form-data" id="search_arr">
     <!--Produce token if it exists, avoid sql inj-->
     {% csrf_token %}
 

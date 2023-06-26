@@ -19,13 +19,6 @@ class PlotAlgorithmPerformanceView(UserPassesTestMixin, TemplateView):
     def test_func(self):
         return self.request.user.is_authenticated
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        context['graphic'] = summary()
-
-        return context
-
 
 class ArraySearchView(UserPassesTestMixin, FormView):
     template_name = 'algos/input_arr.html'

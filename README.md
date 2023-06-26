@@ -6,18 +6,20 @@ ___
 
 ## *Project Status*
 
-***In progress &#128347;***
+***Completed &#10003;***
 ___
 ## Functionality
-- Basic CRUD operations on posts via Django generic view classes
-- NewsParser class, responsible for parsing / shortening / translating news
-- The PostDB class for working with the sqlite3 database and implementing the "Singleton" design pattern
-- Pyrogram.Client class, responsible for sending messages to chat / group to "pending
-- TelegramBot class, responsible for sending links to the web application and fault notifications
+- DRF API for transferring images of comparison graphs of the 3 leading index search algorithms in the sequence
+- Generic view classes for showing and checking algorithms
+- Registration/Authentication of users via the standard Abastract User model
+- Implementation of search algorithms (*Interpolation, Binary, Fibonacci*) followed by validation
+- AJAX requests for dynamic chart loading, as well as switching between application pages
 
 ## Technologies and Frameworks
 - Python 3.11 
 - Django 4.2.1
+- DRF 3.14.0
+- AJAX
 - HTML, CSS, JS
 - SQLite 3
 ___
@@ -102,7 +104,5 @@ ___
 
 ## Additional Information
 
-During the development process I noticed some errors in **Telethon** module (*Telethon==1.24.0*), so it was replaced by a more stable **Pyrogram** (*Pyrogram==2.0.106*).
-
-Sending messages to the group was implemented through a user session, since the standard API for telegram bots does not allow to send messages to pending and edit in the menu of the telegram application. Which is quite sad...
+Interpolation search is better than binary search under ideal conditions (the elements of a given array are uniformly distributed). However, in cases of non-uniform distribution Binary search preserves asymptotics in **O(log(n))**, while Interpolation loses efficiency up to **O(n)**.
 ___

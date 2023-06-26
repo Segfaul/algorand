@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'algos.apps.AlgosConfig'
+    'algos.apps.AlgosConfig',
+    'rest_framework',
+    'api.apps.ApiConfig'
 ]
 
 MIDDLEWARE = [
@@ -119,7 +121,9 @@ USE_TZ = False
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = []
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'algos', 'static'),
+]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

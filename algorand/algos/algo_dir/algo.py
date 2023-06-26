@@ -131,68 +131,68 @@ def measure_execution_time(function: Callable, *args):
     return [execution_time, res, function.__name__]
 
 
-def summary():
-    sizes = [500_000, 2_000_000, 5_000_000, 10_000_000]
-    data = []
-    for size in sizes:
-        # data.append(np.random.randint(low=0, high=100, size=size))
-        data.append(np.unique(np.arange(size)))
-
-    times_algorithm = {
-        'interpolation_search': [],
-        'fibonacci_search': [],
-        'binary_search': []
-    }
-
-    for arr in data:
-        arr.sort()
-        search_value = arr[0]
-
-        times_algorithm['interpolation_search'].append(
-            measure_execution_time(interpolation_search, arr, search_value)[0]
-        )
-        times_algorithm['fibonacci_search'].append(
-            measure_execution_time(fibonacci_search, arr, search_value)[0]
-        )
-        times_algorithm['binary_search'].append(
-            measure_execution_time(binary_search, arr, search_value)[0]
-        )
-
-    plt.clf()
-
-    plt.figure(figsize=(20, 12))
-
-    plt.plot(
-        sizes,
-        times_algorithm['interpolation_search'],
-        label='interpolation_search',
-        linestyle='-',
-        color='blue'
-    )
-    plt.plot(
-        sizes,
-        times_algorithm['fibonacci_search'],
-        label='fibonacci_search',
-        linestyle='--',
-        color='green'
-    )
-    plt.plot(
-        sizes,
-        times_algorithm['binary_search'],
-        label='binary_search',
-        linestyle=':',
-        color='red'
-    )
-    plt.xlabel('Array Size')
-    plt.ylabel('Execution Time')
-    plt.title('Algorithm Performance')
-    plt.legend()
-
-    buffer = BytesIO()
-    plt.savefig(buffer, format='png')
-    buffer.seek(0)
-
-    image_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
-    buffer.close()
-
-    return image_base64
+# def summary():
+#     sizes = [1_250_000, 2_500_000, 5_000_000, 10_000_000]
+#     data = []
+#     for size in sizes:
+#         data.append(np.random.randint(low=0, high=size, size=size))
+#         # data.append(np.array(np.unique(np.arange(size)), dtype=np.float64))
+#
+#     times_algorithm = {
+#         'interpolation_search': [],
+#         'fibonacci_search': [],
+#         'binary_search': []
+#     }
+#
+#     for arr in data:
+#         arr.sort()
+#         search_value = arr[0]
+#
+#         times_algorithm['interpolation_search'].append(
+#             measure_execution_time(interpolation_search, arr, search_value)[0]
+#         )
+#         times_algorithm['fibonacci_search'].append(
+#             measure_execution_time(fibonacci_search, arr, search_value)[0]
+#         )
+#         times_algorithm['binary_search'].append(
+#             measure_execution_time(binary_search, arr, search_value)[0]
+#         )
+#
+#     plt.clf()
+#
+#     plt.figure(figsize=(20, 12))
+#
+#     plt.plot(
+#         sizes,
+#         times_algorithm['interpolation_search'],
+#         label='interpolation_search',
+#         linestyle='-',
+#         color='blue'
+#     )
+#     plt.plot(
+#         sizes,
+#         times_algorithm['fibonacci_search'],
+#         label='fibonacci_search',
+#         linestyle='--',
+#         color='green'
+#     )
+#     plt.plot(
+#         sizes,
+#         times_algorithm['binary_search'],
+#         label='binary_search',
+#         linestyle=':',
+#         color='red'
+#     )
+#     plt.xlabel('Array Size')
+#     plt.ylabel('Execution Time')
+#     plt.title('Algorithm Performance')
+#     plt.legend()
+#
+#     buffer = BytesIO()
+#     plt.savefig(buffer, format='png')
+#     buffer.seek(0)
+#
+#     image_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
+#     buffer.close()
+#
+#     return image_base64
