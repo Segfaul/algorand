@@ -76,26 +76,20 @@ ___
     python manage.py runserver &
     ```
 
-10. Navigate to the top level directory
-
-    ```shell
-    cd ..
-    ```
-
-12. In case of a problem, the program will stop automatically or you can stop execution using
+10. In case of a problem, the program will stop automatically or you can stop execution using
 
     ```shell
     ps aux | grep ".py"
     kill PID
     ```
 
-13. Go to the site and enter the previously created data of the superuser (step 8)
+11. Go to the site and enter the previously created data of the superuser (step 8)
 
     ```shell
     http://127.0.0.1:8000
     ```
 
-14. In the future you can deploy the project on a remote server
+12. In the future you can deploy the project on a remote server
 
     ```python
     python manage.py runserver 123.123.123.123:8000 &
