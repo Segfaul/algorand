@@ -9,11 +9,11 @@ ___
 ***Completed &#10003;***
 ___
 ## Functionality
-- DRF API for transferring images of comparison graphs of the 3 leading index search algorithms in the sequence
-- Generic view classes for showing and checking algorithms
-- Registration/Authentication of users via the standard Abastract User model
-- Implementation of search algorithms (*Interpolation, Binary, Fibonacci*) followed by validation
-- AJAX requests for dynamic chart loading, as well as switching between application pages
+- [DRF API](https://github.com/Segfaul/algorand/blob/f0023c2ca9e891717626eddc2d32812651cc7654/algorand/api/views.py#L13-L27) for transferring images of comparison graphs of the 3 leading index search algorithms in the sequence
+- [Generic view classes](https://github.com/Segfaul/algorand/blob/f0023c2ca9e891717626eddc2d32812651cc7654/algorand/algos/views.py#L13-L41) for showing and checking algorithms
+- [Registration/Authentication](https://github.com/Segfaul/algorand/blob/f0023c2ca9e891717626eddc2d32812651cc7654/algorand/algos/views.py#L44-L71) of users via the standard Abastract User model
+- [Implementation of search algorithms](https://github.com/Segfaul/algorand/blob/f0023c2ca9e891717626eddc2d32812651cc7654/algorand/algos/algo_dir/algo.py#L11-L131) (*Interpolation, Binary, Fibonacci*) followed by [validation](https://github.com/Segfaul/algorand/blob/f0023c2ca9e891717626eddc2d32812651cc7654/algorand/algos/forms.py#L21-L66)
+- [AJAX requests](https://github.com/Segfaul/algorand/blob/f0023c2ca9e891717626eddc2d32812651cc7654/algorand/algos/static/algos/js/ajax.js) for dynamic chart loading, as well as switching between application pages
 
 ## Technologies and Frameworks
 - Python 3.11 
