@@ -83,7 +83,7 @@ ___
     kill PID
     ```
 
-11. Go to the site and enter the previously created data of the superuser (step 8)
+11. Go to the site and enter the previously created data of the superuser (step 7)
 
     ```shell
     http://127.0.0.1:8000
